@@ -1,6 +1,7 @@
 import argparse
 import expense_tracker as et
 import calendar
+import error_codes
 
 def main(): 
     #Intialize argument parser
@@ -37,28 +38,7 @@ def main():
 
     #Handle errors and print output
     if not success:
-        if error == "INVALID_AMOUNT":
-            print("Error: The expense amount is invalid")
-        elif error == "INVALID_DESCRIPTION":
-            print("Error: The description is invalid")
-        elif error == "INVALID_DATE":
-            print("Error: The date is invalid")
-        elif error == "INVALID_MONTH":
-            print("Error: The month is invalid")
-        elif error == "INVALID_ID":
-            print("Error: The ID is invalid")
-        elif error == "ID_DOESNT_EXIST":
-            print("Error: The ID doesn't exist")
-        elif error == "ERROR_SAVING_ROW":
-            print("Error: The row could not be saved")
-        elif error == "FILE_NOT_FOUND":
-            print("Error: The file couldn't be found")
-        elif error == "EMPTY_FILE":
-            print("Error: The file is empty")
-        elif error == "FILE_MALFORMED":
-            print("Error: File is malformed (incorrect data type/format or headers are missing)")
-        else:
-            print("Error: Something went wrong")
+        print(error_codes.get_error_message(error))
     else:
         if args.command == "add":
             print(f"Expense added successfully (ID: {return_object})")
@@ -67,7 +47,7 @@ def main():
         elif args.command == "delete":
             print(f"Expense deleted successfully (ID: {return_object})")
         elif args.command == "list":
-            print(return_object)
+            print(return_object.to_string())
         elif args.command == "summary" and not args.month:
             print(f"Total expenses: ${return_object}")
         elif args.command == "summary" and args.month:

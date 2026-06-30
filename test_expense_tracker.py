@@ -181,10 +181,10 @@ def main():
 
     tests = [
         ("add", test_add),
-        #("list", test_list),
-        #("summary", test_summary),
-        #("summary by month", test_summary_month),
-        #("update", test_update),
+        ("list", test_list),
+        ("summary", test_summary),
+        ("summary by month", test_summary_month),
+        ("update", test_update),
 
         #("negative amount", test_negative_amount),
         #("missing description", test_missing_description),
@@ -195,7 +195,7 @@ def main():
         #("invalid month", test_invalid_month),
         #("invalid date", test_invalid_date),
 
-        #("delete", test_delete),
+        ("delete", test_delete),
     ]
 
     passed = 0
